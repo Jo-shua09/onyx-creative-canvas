@@ -1,14 +1,14 @@
 
 import React from 'react';
 import Layout from '../components/Layout';
-import Hero from '../components/Hero';
+import AboutComponent from '../components/About';
 
-const Index = () => {
+const About = () => {
   return (
     <Layout>
-      <Hero />
+      <AboutComponent />
     </Layout>
   );
 };
 
-export default Index;
+export default About;
