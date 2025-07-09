@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -65,8 +64,7 @@ export default {
 				},
 				portfolio: {
 					'dark': '#321B15',
-					'teal': '#278783',
-					'cream': '#FFEBD0'
+					'cream': '#ECE5D8'
 				}
 			},
 			borderRadius: {
