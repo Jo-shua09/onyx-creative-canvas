@@ -32,63 +32,64 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-portfolio-dark/95 backdrop-blur-md shadow-lg'
+          ? 'bg-portfolio-dark/90 backdrop-blur-md shadow-2xl border-b border-portfolio-teal/20'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <Link to="/" className="text-2xl font-bold text-portfolio-cream">
-            Portfolio
+        <div className="flex justify-between items-center py-6">
+          <Link to="/" className="text-3xl font-bold text-portfolio-cream hover:text-portfolio-teal transition-all duration-300 hover-lift">
+            <span className="gradient-text">Portfolio</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          {/* Enhanced Desktop Navigation */}
+          <div className="hidden md:flex space-x-10">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
                 onClick={() => setIsOpen(false)}
-                className={`text-portfolio-cream transition-colors duration-300 relative group ${
+                className={`text-portfolio-cream transition-all duration-300 relative group text-lg font-medium ${
                   isActiveRoute(item.href) 
                     ? 'text-portfolio-teal' 
                     : 'hover:text-portfolio-teal'
                 }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-portfolio-teal transition-all duration-300 ${
+                <span className={`absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-portfolio-teal to-portfolio-cream rounded-full transition-all duration-300 ${
                   isActiveRoute(item.href) ? 'w-full' : 'w-0 group-hover:w-full'
                 }`}></span>
               </Link>
             ))}
           </div>
 
-          {/* Mobile Navigation Toggle */}
+          {/* Enhanced Mobile Navigation Toggle */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-portfolio-cream hover:text-portfolio-teal transition-colors"
+              className="text-portfolio-cream hover:text-portfolio-teal transition-all duration-300 p-2 rounded-lg hover:bg-portfolio-teal/10"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Enhanced Mobile Navigation Menu */}
         {isOpen && (
-          <div className="md:hidden bg-portfolio-dark/95 backdrop-blur-md rounded-lg mt-2 p-4 animate-fade-in">
-            {navItems.map((item) => (
+          <div className="md:hidden bg-portfolio-dark/95 backdrop-blur-md rounded-2xl mt-4 p-6 animate-fade-in border-2 border-portfolio-teal/20 shadow-2xl">
+            {navItems.map((item, index) => (
               <Link
                 key={item.name}
                 to={item.href}
                 onClick={() => setIsOpen(false)}
-                className={`block w-full text-left py-2 transition-colors duration-300 ${
+                className={`block w-full text-left py-4 px-4 rounded-xl transition-all duration-300 text-lg font-medium ${
                   isActiveRoute(item.href)
-                    ? 'text-portfolio-teal font-medium'
-                    : 'text-portfolio-cream hover:text-portfolio-teal'
+                    ? 'text-portfolio-teal bg-portfolio-teal/10 font-bold'
+                    : 'text-portfolio-cream hover:text-portfolio-teal hover:bg-portfolio-teal/5'
                 }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {item.name}
               </Link>

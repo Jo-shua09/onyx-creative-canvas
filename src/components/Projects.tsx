@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { ExternalLink, Github, Calendar, Tag } from 'lucide-react';
+import { ExternalLink, Github, Calendar, Tag, Star } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
@@ -69,97 +70,111 @@ const Projects = () => {
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 bg-portfolio-dark relative overflow-hidden particles">
+      {/* Enhanced background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-portfolio-teal/5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-portfolio-cream/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '-2s' }}></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-on-scroll">
-          <h2 className="text-4xl md:text-5xl font-bold text-portfolio-dark mb-4">
+        {/* Enhanced Section Header */}
+        <div className="text-center mb-20 animate-on-scroll">
+          <h2 className="text-5xl md:text-6xl font-bold text-portfolio-cream mb-6">
             Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A showcase of my recent work and personal projects
+          <p className="text-xl text-portfolio-cream/80 max-w-3xl mx-auto leading-relaxed">
+            A showcase of my recent work and passion projects that push creative boundaries
           </p>
         </div>
 
-        {/* Featured Projects */}
-        <div className="space-y-20 mb-20">
+        {/* Enhanced Featured Projects */}
+        <div className="space-y-32 mb-32">
           {featuredProjects.map((project, index) => (
             <div
               key={project.title}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-on-scroll ${
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center animate-on-scroll ${
                 index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
               }`}
             >
-              {/* Project Image */}
+              {/* Enhanced Project Image */}
               <div className={`relative group ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                <div className="bg-gradient-to-br from-portfolio-teal/20 to-portfolio-cream/20 rounded-xl p-4 hover-lift">
-                  <div className="bg-portfolio-dark/80 rounded-lg h-64 flex items-center justify-center">
-                    <div className="text-portfolio-cream text-lg font-semibold">
+                <div className="bg-gradient-to-br from-portfolio-teal/20 to-portfolio-cream/20 rounded-3xl p-6 hover-lift hover-glow transition-all duration-700">
+                  <div className="bg-portfolio-dark/90 rounded-2xl h-80 flex items-center justify-center relative overflow-hidden border-2 border-portfolio-teal/20">
+                    <div className="text-portfolio-cream text-xl font-bold">
                       {project.title} Preview
                     </div>
+                    
+                    {/* Animated overlay pattern */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-portfolio-teal/10 via-transparent to-portfolio-cream/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
                 </div>
                 
-                {/* Overlay with links */}
-                <div className="absolute inset-0 bg-portfolio-dark/80 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                {/* Enhanced overlay with links */}
+                <div className="absolute inset-0 bg-portfolio-dark/90 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center space-x-6">
                   <a
                     href={project.live}
-                    className="p-3 bg-portfolio-teal rounded-full text-white hover:bg-portfolio-teal/80 transition-colors hover-lift"
+                    className="p-4 bg-portfolio-teal rounded-2xl text-portfolio-cream hover:bg-portfolio-teal/80 transition-all duration-300 hover-lift hover-glow"
                   >
-                    <ExternalLink size={20} />
+                    <ExternalLink size={24} />
                   </a>
                   <a
                     href={project.github}
-                    className="p-3 bg-portfolio-cream rounded-full text-portfolio-dark hover:bg-portfolio-cream/80 transition-colors hover-lift"
+                    className="p-4 bg-portfolio-cream rounded-2xl text-portfolio-dark hover:bg-portfolio-cream/80 transition-all duration-300 hover-lift hover-glow"
                   >
-                    <Github size={20} />
+                    <Github size={24} />
                   </a>
                 </div>
               </div>
 
-              {/* Project Details */}
-              <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
-                <div className="flex items-center space-x-4 text-portfolio-teal">
-                  <Calendar size={16} />
-                  <span>{project.date}</span>
-                  <Tag size={16} />
-                  <span>Featured</span>
+              {/* Enhanced Project Details */}
+              <div className={`space-y-8 ${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
+                <div className="flex items-center space-x-6 text-portfolio-teal">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={18} />
+                    <span className="font-medium">{project.date}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Star size={18} />
+                    <span className="font-medium">Featured</span>
+                  </div>
                 </div>
                 
-                <h3 className="text-3xl font-bold text-portfolio-dark">
+                <h3 className="text-4xl md:text-5xl font-bold text-portfolio-cream leading-tight">
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-portfolio-cream/80 leading-relaxed text-lg">
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-portfolio-cream/30 text-portfolio-dark rounded-full text-sm font-medium"
+                      className="px-4 py-2 bg-portfolio-teal/20 border border-portfolio-teal/30 text-portfolio-cream rounded-xl text-sm font-medium hover:bg-portfolio-teal/30 transition-colors duration-300"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
                 
-                <div className="flex space-x-4">
+                <div className="flex flex-wrap gap-6">
                   <a
                     href={project.live}
-                    className="px-6 py-3 bg-portfolio-teal text-white rounded-lg hover:bg-portfolio-teal/80 transition-all duration-300 hover-lift font-semibold inline-flex items-center space-x-2"
+                    className="group px-8 py-4 bg-portfolio-teal text-portfolio-cream rounded-xl hover:bg-portfolio-teal/80 transition-all duration-500 hover-lift font-bold inline-flex items-center space-x-3 relative overflow-hidden"
                   >
-                    <ExternalLink size={16} />
-                    <span>Live Demo</span>
+                    <ExternalLink size={20} />
+                    <span className="relative z-10">Live Demo</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-portfolio-teal to-portfolio-cream opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
                   </a>
                   <a
                     href={project.github}
-                    className="px-6 py-3 border-2 border-portfolio-dark text-portfolio-dark rounded-lg hover:bg-portfolio-dark hover:text-white transition-all duration-300 hover-lift font-semibold inline-flex items-center space-x-2"
+                    className="group px-8 py-4 border-2 border-portfolio-cream text-portfolio-cream rounded-xl hover:bg-portfolio-cream hover:text-portfolio-dark transition-all duration-500 hover-lift font-bold inline-flex items-center space-x-3"
                   >
-                    <Github size={16} />
-                    <span>Code</span>
+                    <Github size={20} />
+                    <span>View Code</span>
                   </a>
                 </div>
               </div>
@@ -167,68 +182,68 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Other Projects Grid */}
+        {/* Enhanced Other Projects Grid */}
         <div className="animate-on-scroll">
-          <h3 className="text-3xl font-bold text-portfolio-dark text-center mb-12">
-            Other Projects
+          <h3 className="text-4xl font-bold text-portfolio-cream text-center mb-16">
+            Other Amazing Projects
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 stagger-children">
             {otherProjects.map((project, index) => (
               <div
                 key={project.title}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift overflow-hidden border border-gray-100 group animate-on-scroll"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="group bg-portfolio-dark/80 backdrop-blur-md border-2 border-portfolio-teal/20 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-700 hover-lift overflow-hidden hover-glow animate-on-scroll"
+                style={{ animationDelay: `${index * 0.15}s` }}
               >
-                {/* Project Image */}
-                <div className="relative h-48 bg-gradient-to-br from-portfolio-teal/20 to-portfolio-cream/20 flex items-center justify-center">
-                  <div className="text-portfolio-dark font-semibold">
+                {/* Enhanced Project Image */}
+                <div className="relative h-56 bg-gradient-to-br from-portfolio-teal/20 to-portfolio-cream/20 flex items-center justify-center">
+                  <div className="text-portfolio-cream font-bold text-lg">
                     {project.title}
                   </div>
                   
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-portfolio-dark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                  {/* Enhanced Overlay */}
+                  <div className="absolute inset-0 bg-portfolio-dark/90 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center space-x-4">
                     <a
                       href={project.live}
-                      className="p-2 bg-portfolio-teal rounded-full text-white hover:bg-portfolio-teal/80 transition-colors"
+                      className="p-3 bg-portfolio-teal rounded-xl text-portfolio-cream hover:bg-portfolio-teal/80 transition-all duration-300 hover-lift"
                     >
-                      <ExternalLink size={16} />
+                      <ExternalLink size={18} />
                     </a>
                     <a
                       href={project.github}
-                      className="p-2 bg-portfolio-cream rounded-full text-portfolio-dark hover:bg-portfolio-cream/80 transition-colors"
+                      className="p-3 bg-portfolio-cream rounded-xl text-portfolio-dark hover:bg-portfolio-cream/80 transition-all duration-300 hover-lift"
                     >
-                      <Github size={16} />
+                      <Github size={18} />
                     </a>
                   </div>
                 </div>
 
-                {/* Project Content */}
-                <div className="p-6">
-                  <div className="flex items-center space-x-2 text-portfolio-teal text-sm mb-3">
-                    <Calendar size={14} />
-                    <span>{project.date}</span>
+                {/* Enhanced Project Content */}
+                <div className="p-8">
+                  <div className="flex items-center space-x-3 text-portfolio-teal text-sm mb-4">
+                    <Calendar size={16} />
+                    <span className="font-medium">{project.date}</span>
                   </div>
                   
-                  <h4 className="text-xl font-bold text-portfolio-dark mb-3">
+                  <h4 className="text-xl font-bold text-portfolio-cream mb-4 group-hover:text-portfolio-teal transition-colors duration-300">
                     {project.title}
                   </h4>
                   
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  <p className="text-portfolio-cream/70 text-sm mb-6 leading-relaxed">
                     {project.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-1 mb-4">
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.slice(0, 3).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-portfolio-cream/30 text-portfolio-dark rounded text-xs font-medium"
+                        className="px-3 py-1 bg-portfolio-teal/20 border border-portfolio-teal/30 text-portfolio-cream rounded-lg text-xs font-medium"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.technologies.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">
+                      <span className="px-3 py-1 bg-portfolio-cream/20 border border-portfolio-cream/30 text-portfolio-cream rounded-lg text-xs font-medium">
                         +{project.technologies.length - 3}
                       </span>
                     )}
